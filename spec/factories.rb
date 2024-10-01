@@ -1,10 +1,4 @@
-FactoryBot.define do
-  factory :comment do
-    description { "MyText" }
-    post { nil }
-  end
-
-  
+FactoryBot.define do 
   factory :user do
     username { "test" }
     email { "test@gmail.com" }
@@ -13,6 +7,12 @@ FactoryBot.define do
 
   factory :post do
     description { "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus atque quia nulla a odit hic? Cumque voluptatum sint voluptate. Minima natus quam nobis pariatur ipsa magnam deleniti voluptates, sed maiores?" }
+    association :user
+  end
+
+  factory :comment do 
+    description { "Lorem ipsum dolor sit, amet consectetur adipisicing elit." }
+    association :post
     association :user
   end
 end
