@@ -15,4 +15,9 @@ FactoryBot.define do
     association :post
     association :user
   end
+
+  factory :like do 
+    association :post
+    association :user
+  end
 end
