@@ -21,10 +21,16 @@ RSpec.describe User, type: :model do
     expect(joao.avatar.attached?).to eq(false)
   end
 
-  it "creates an instance of User where username has at least 2 digits" do
+  it "username with less than 2 characters should not save" do
     user = User.new(email: 'user@gmail.com', password: 12345678, username: 'F')
 
     
-    expect(user.username.length).to be >= 2
+    expect(user.valid?).to be_falsey
+  end
+
+  it "username with more than 2 characters should be valid and persisted" do 
+    user = User.new(email: 'user@gmail.com', password: 12345678, username: 'Faker')
+
+    expect(user.valid?).to be_truthy
   end
 end
