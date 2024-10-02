@@ -20,4 +20,8 @@ FactoryBot.define do
     association :post
     association :user
   end
+
+  factory :feed do 
+    title { "Main Feed" }
+  end
 end
