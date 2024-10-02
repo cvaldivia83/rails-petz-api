@@ -40,6 +40,7 @@ gem 'devise-jwt'
 gem 'jsonapi-serializer'
 gem "dotenv-rails"
 gem "cloudinary"
+gem "pundit"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
