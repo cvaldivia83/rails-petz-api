@@ -15,7 +15,7 @@ RSpec.describe Comment, type: :model do
   end
 
   context "when description is not empty" do 
-    let (:user) { create(:user,  username: "Bob", email: "bob@gmail.com", password: "1234567") }
+    let (:user) { create(:user, username: "Bob", email: "bob@gmail.com", password: "1234567") }
 
     let (:comment) { create(:comment, user_id: user.id) }
 
