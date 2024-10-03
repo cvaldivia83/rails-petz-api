@@ -4,7 +4,7 @@ class Api::V1::FeedsController < Api::V1::BaseController
   # end
   # 
   def show 
-    @feed = Feed.first
+    @feed = Feed.first || Feed.create(title: "main")
     authorize @feed
   end
 end
