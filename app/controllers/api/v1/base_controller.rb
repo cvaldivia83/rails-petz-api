@@ -1,8 +1,9 @@
 class Api::V1::BaseController < ActionController::API
   include Pundit::Authorization
+  before_action :authenticate_user!
 
   after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
+  # after_action :verify_policy_scoped, only: :index
 
   rescue_from Pundit::NotAuthorizedError,   with: :user_not_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
@@ -19,3 +20,4 @@ class Api::V1::BaseController < ActionController::API
     render json: { error: exception.message }, status: :not_found
   end
 end
+
