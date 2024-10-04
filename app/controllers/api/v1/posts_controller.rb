@@ -1,5 +1,5 @@
 class Api::V1::PostsController < Api::V1::BaseController
-
+  before_action :set_post, only: [ :show, :update ]
   def index 
     @posts = policy_scope(Post)
   end
@@ -16,11 +16,23 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def show
-    @post = Post.find(params[:id])
+  end
+
+  def update 
     authorize @post
+    if @post.update(post_params)
+      render :show
+    else
+      render_error
+    end
   end
 
   private 
+
+  def set_post 
+    @post = Post.find(params[:id])
+    authorize @post
+  end
 
   def post_params
     params.require(:post).permit(:description, :photo)
