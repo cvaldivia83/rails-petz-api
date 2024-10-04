@@ -1,5 +1,5 @@
 class Api::V1::PostsController < Api::V1::BaseController
-  before_action :set_post, only: [ :show, :update ]
+  before_action :set_post, only: [ :show, :update, :destroy ]
   def index 
     @posts = policy_scope(Post)
   end
@@ -25,6 +25,12 @@ class Api::V1::PostsController < Api::V1::BaseController
     else
       render_error
     end
+  end
+
+  def destroy 
+    authorize @post
+    @post.destroy
+    head :no_content
   end
 
   private 

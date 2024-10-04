@@ -37,4 +37,12 @@ RSpec.describe Api::V1::PostsController, type: :request do
       expect(post.description).to eq("New Content")
     end
   end
+
+  describe "DELETE #destroy" do 
+    it "deletes a selected post" do 
+      delete api_v1_post_path(post.id)
+
+      expect(response).to have_http_status(204)
+    end
+  end
 end
