@@ -43,4 +43,9 @@ class Api::V1::CommentsController < Api::V1::BaseController
     @comment = Comment.find(params[:id])
     authorize @comment
   end
+
+  def render_error
+    render json: { errors: @comment.errors.full_messages },
+      status: :unprocessable_entity
+  end
 end
