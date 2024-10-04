@@ -1,11 +1,11 @@
-# README
+# Rails Petz API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the implementation of a Rails API to create a social media for pets. 
 
 Things you may want to cover:
 
 * Ruby version
+  ruby 3.1.2
 
 * System dependencies
 
@@ -14,6 +14,11 @@ Things you may want to cover:
 * Database creation
 
 * Database initialization
+  If you clone this project in your computer, please open your terminal and type: 
+
+  rails db:create
+  rails db:migrate 
+  rails db:seed
 
 * How to run the test suite
 
