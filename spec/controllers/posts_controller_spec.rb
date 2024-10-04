@@ -1,0 +1,28 @@
+require 'rails_helper'
+
+RSpec.describe Api::V1::PostsController, type: :request do 
+  let (:posts) { create_list(:post, 3) }
+  let (:user) { create(:user) }
+
+  before do
+    login_as(user, scope: :user)  # Logs in the user
+  end
+  
+  describe "GET #index" do
+    it "returns a 200 status code" do 
+      get api_v1_posts_path
+
+      expect(response).to have_http_status(200)
+    end
+  end
+
+
+  describe "GET #show" do 
+    it "returns a 200 status code" do 
+      
+      get api_v1_post_path(posts[0].id)
+
+      expect(response).to have_http_status(200)
+    end
+  end
+end
