@@ -1,5 +1,6 @@
 class Api::V1::CommentsController < Api::V1::BaseController
   before_action :set_post, only: [ :create ]
+  before_action :set_comment, only: [ :show, :destroy ]
 
   def create 
     @comment = Comment.new(comment_params)
@@ -18,12 +19,14 @@ class Api::V1::CommentsController < Api::V1::BaseController
   end
 
   def show 
-    @comment = Comment.find(params[:id])
-    authorize @comment
+    @comment.destroy 
+
   end
 
   def destroy 
-    
+    authorize @comment
+    @comment.destroy
+    head :ok
   end
 
   private 
@@ -34,5 +37,10 @@ class Api::V1::CommentsController < Api::V1::BaseController
 
   def set_post
     @post = Post.find(params[:post_id])
+  end
+
+  def set_comment 
+    @comment = Comment.find(params[:id])
+    authorize @comment
   end
 end

@@ -28,6 +28,12 @@ RSpec.describe Api::V1::PostsController, type: :request do
     end
   end
 
+  describe "POST #create" do 
+    it "creates a new post" do 
+      expect{ post }.to change(Post, :count).by(1)
+    end
+  end
+
   describe "PATCH #update" do 
     it "returns an updated value to the description" do
       patch api_v1_post_path(post.id), params: { post: { description: "New Content" } }
