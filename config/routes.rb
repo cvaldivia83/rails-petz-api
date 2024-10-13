@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resource :user, only: [ :show ] 
       resources :feeds, only: [ :show ]
       resources :posts, only: [ :index, :show, :create, :update, :destroy ] do
         resources :comments, only: [ :create, :destroy ]
