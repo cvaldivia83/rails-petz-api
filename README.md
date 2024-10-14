@@ -52,4 +52,4 @@ If you want to run tests for controllers, type in your terminal:
 | **DEL**| http://localhost:3001/api/v1/comments/:id| Comment destroy |
 |**POST**| http://localhost:3001/api/v1/posts/:post_id/likes | Like create |
 | **GET** | http://localhost:3001/api/v1/posts | Post index|
-
+| **GET**| http://localhost:3001/api/v1/user | Get user|
