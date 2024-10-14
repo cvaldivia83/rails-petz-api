@@ -15,4 +15,8 @@ class UserPolicy < ApplicationPolicy
   def show? 
     true
   end
+
+  def validate_token? 
+    true
+  end
 end

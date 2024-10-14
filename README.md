@@ -53,3 +53,4 @@ If you want to run tests for controllers, type in your terminal:
 |**POST**| http://localhost:3001/api/v1/posts/:post_id/likes | Like create |
 | **GET** | http://localhost:3001/api/v1/posts | Post index|
 | **GET**| http://localhost:3001/api/v1/user | Get user|
+| **GET**| http://localhost:3001/api/v1/user/validate_token| Validate Token|
