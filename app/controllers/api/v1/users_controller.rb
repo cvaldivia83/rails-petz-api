@@ -12,7 +12,7 @@ class Api::V1::UsersController < Api::V1::BaseController
       id: current_user.id,
       email: current_user.email,
       username: current_user.username,
-      avatar_url: current_user.avatar.atacched? ? current_user.avatar.url : ''
+      avatar_url: current_user.avatar.attached? ? current_user.avatar.url : ''
     }
     render json: @user, status: :ok
   end

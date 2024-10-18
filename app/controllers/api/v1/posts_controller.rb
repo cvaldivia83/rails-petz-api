@@ -1,8 +1,16 @@
 class Api::V1::PostsController < Api::V1::BaseController
   before_action :set_post, only: [ :show, :update, :destroy ]
-  def index 
+
+  def index
     @posts = policy_scope(Post)
+
+    if params[:user_id].present? && params[:posts_number].present?
+      @posts = @posts.where(user: params[:user_id].to_i)
+                     .order(created_at: :desc)
+                     .limit(params[:posts_number].to_i)
+    end
   end
+
 
   def create
     @post = Post.new(post_params)
