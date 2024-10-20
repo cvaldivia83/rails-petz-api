@@ -38,20 +38,38 @@ If you want to run tests for controllers, type in your terminal:
 
 ## Endpoints
 
+### User Endpoints
+
 |Verb| URL  | Action
 |--|--|--|
-|**POST**  | http://localhost:3001/signup   | User Sign Up|
-|**POST**  | http://localhost:3001/login   | User Log In|
-| **DEL** | http://localhost:3001/logout | User Log out|
-| **GET** | http://localhost:3001/api/v1/feeds/:id | Feed show |
-| **POST** | http://localhost:3001/api/v1/posts | Post create |
-| **PATCH**| http://localhost:3001/api/v1/posts/:id| Post edit |
-| **DEL**| http://localhost:3001/api/v1/posts/:id| Post destroy |
-| **GET**| http://localhost:3001/api/v1/comments/:id| Comment show |
-| **POST**| http://localhost:3001/api/v1/posts/:post_id/comments| Comment create |
-| **DEL**| http://localhost:3001/api/v1/comments/:id| Comment destroy |
+|**POST**  | http://localhost:3001/signup   |  Sign Up|
+|**POST**  | http://localhost:3001/login   | Log In|
+| **DEL** | http://localhost:3001/logout | Log out|
+| **GET**| http://localhost:3001/api/v1/user | SHOW|
+| **GET**| http://localhost:3001/api/v1/user/validate_token| Validate JWT Token|
+
+### Post Endpoints
+|Verb| URL  | Action
+|--|--|--|
+| **GET** | http://localhost:3001/api/v1/posts | INDEX|
+| **GET** | http://localhost:3001/api/v1/posts/:id | SHOW |
+| **POST** | http://localhost:3001/api/v1/posts | CREATE |
+| **PATCH**| http://localhost:3001/api/v1/posts/:id| UPDATE |
+| **DEL**| http://localhost:3001/api/v1/posts/:id| DESTROY |
+
+### Comment endpoints
+|Verb| URL  | Action
+|--|--|--|
+| **GET**| http://localhost:3001/api/v1/comments/:id| SHOW |
+| **POST**| http://localhost:3001/api/v1/posts/:post_id/comments| CREATE |
+| **DEL**| http://localhost:3001/api/v1/comments/:id| DESTROY |
+
+### Feed endpoints
+|Verb| URL  | Action
+|--|--|--|
+| **GET** | http://localhost:3001/api/v1/feeds/:id | SHOW |
+
+### Like endpoints 
+|Verb| URL  | Action
+|--|--|--|
 |**POST**| http://localhost:3001/api/v1/posts/:post_id/likes | Like create |
-| **GET** | http://localhost:3001/api/v1/posts | Post index|
-| **GET** | http://localhost:3001/api/v1/posts/:id | Post show|
-| **GET**| http://localhost:3001/api/v1/user | Get user|
-| **GET**| http://localhost:3001/api/v1/user/validate_token| Validate Token|
