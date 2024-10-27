@@ -47,6 +47,7 @@ If you want to run tests for controllers, type in your terminal:
 | **DEL** | http://localhost:3001/logout | Log out|
 | **GET**| http://localhost:3001/api/v1/user | SHOW|
 | **GET**| http://localhost:3001/api/v1/user/validate_token| Validate JWT Token|
+| **GET**| http://localhost:3001/api/v1/stats | User stats|
 
 ### Post Endpoints
 |Verb| URL  | Action
