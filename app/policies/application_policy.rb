@@ -40,6 +40,10 @@ class ApplicationPolicy
     true
   end
 
+  def profile? 
+    true
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

@@ -1,8 +1,14 @@
 class Api::V1::UsersController < Api::V1::BaseController
-  before_action :authenticate_user! 
+  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:profile, :validate_token]
   
   def index
     @users = policy_scope(User)
+  end
+
+  def profile 
+    @user = User.find(params[:id])
+    authorize @user
   end
 
   def show

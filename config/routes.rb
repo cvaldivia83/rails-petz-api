@@ -19,9 +19,11 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      get 'users/:id', to: 'users#profile'
       resource :user, only: [ :show ] do 
         get :validate_token, on: :collection
       end
+      
       resources :feeds, only: [ :show ]
       resources :posts, only: [ :index, :show, :create, :update, :destroy ] do
         resources :comments, only: [ :create, :destroy ]

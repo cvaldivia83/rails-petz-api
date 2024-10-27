@@ -19,4 +19,8 @@ class UserPolicy < ApplicationPolicy
   def validate_token? 
     true
   end
+
+  def profile? 
+    true
+  end
 end
