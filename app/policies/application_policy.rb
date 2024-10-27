@@ -44,6 +44,10 @@ class ApplicationPolicy
     true
   end
 
+  def stats?
+    true
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user

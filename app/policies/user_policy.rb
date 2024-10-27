@@ -23,4 +23,8 @@ class UserPolicy < ApplicationPolicy
   def profile? 
     true
   end
+
+  def stats?
+    true
+  end
 end
