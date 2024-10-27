@@ -28,4 +28,8 @@ class Api::V1::UsersController < Api::V1::BaseController
     render json: { valid: true, message: 'Token is valid'}, status: :ok
   end
 
+  def stats 
+    @user = current_user
+  end
+
 end

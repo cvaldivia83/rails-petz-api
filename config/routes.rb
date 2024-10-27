@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       get 'users/:id', to: 'users#profile'
+      get 'stats', to: 'users#stats'
       resource :user, only: [ :show ] do 
         get :validate_token, on: :collection
       end
