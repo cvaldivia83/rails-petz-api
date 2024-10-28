@@ -31,7 +31,9 @@ class Api::V1::UsersController < Api::V1::BaseController
   def stats 
     @user = current_user
     @posts = Post.where(user: @user)
+    @posts_count = @posts.count
     @comments_count = Comment.where(post: @posts).count
+    authorize @user
   end
 
 end
