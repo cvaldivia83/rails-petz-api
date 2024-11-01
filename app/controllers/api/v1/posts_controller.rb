@@ -5,7 +5,7 @@ class Api::V1::PostsController < Api::V1::BaseController
     @posts = policy_scope(Post)
 
     if params[:posts_number].present? 
-      @posts = @posts.order(created_at: :desc).limit(params[:posts_number].to_i)
+      @posts = @posts.limit(params[:posts_number].to_i)
     end
 
     if params[:user_id].present? && params[:posts_number].present?
