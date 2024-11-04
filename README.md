@@ -38,6 +38,8 @@ If you want to run tests for controllers, type in your terminal:
 
 ## Endpoints
 
+You can read the documentation [in Postman](https://interstellar-astronaut-295990.postman.co/workspace/Petz-API-devise~b4f23381-caf2-499b-9c4c-74d414f04213/collection/15867341-57803c2e-3e61-4077-b6bf-6e0e555c8366?action=share&creator=15867341).
+
 ### User Endpoints
 
 |Verb| URL  | Action
