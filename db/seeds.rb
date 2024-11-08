@@ -2,13 +2,11 @@ require 'open-uri'
 require "json"
 require 'faker'
 
-
-
 puts "Started seeds"
 
 Comment.destroy_all
 Post.destroy_all
-# User.destroy_all
+User.destroy_all
 
 puts "Destroyed all records"
 
@@ -22,28 +20,28 @@ users = %w[ Inti Tula Juniper Petunia Mimosa Bolt Bolinha Athos Rex Farofa ]
 
 photo_ids = %w[ zv9k2ecE6lE KZv7w34tluA tIfrzHxhPYQ wUluw5KzT-s RxHhxWnXmNs tnGEuzqaDDg K4mSJ7kc0As fglUYfIgmBA yfLG3qsjwEo 75715CVEJhI ]
 
-# users.each_with_index do |user, index|
+users.each_with_index do |user, index|
   
-#   new_user = User.new(
-#     email: "#{user.downcase}@petz.com",
-#     password: 123456,
-#     username: user
-#   )
+  new_user = User.new(
+    email: "#{user.downcase}@petz.com",
+    password: 123456,
+    username: user
+  )
 
-#   url = "#{unsplash_url}photos/#{photo_ids[index]}?#{client_id}"
-#   photo_serialized = URI.parse(url).read
-#   photo_hash = JSON.parse(photo_serialized)
-#   photo_url = photo_hash['urls']['regular']
+  url = "#{unsplash_url}photos/#{photo_ids[index]}?#{client_id}"
+  photo_serialized = URI.parse(url).read
+  photo_hash = JSON.parse(photo_serialized)
+  photo_url = photo_hash['urls']['regular']
 
-#   file = URI.parse(photo_url).open
+  file = URI.parse(photo_url).open
 
-#   new_user.avatar.attach(io: file, filename: "pet_#{index + 1}.jpg", content_type: 'image/jpg')
+  new_user.avatar.attach(io: file, filename: "pet_#{index + 1}.jpg", content_type: 'image/jpg')
 
-#   new_user.save!
+  new_user.save!
 
-#   puts "Created #{user} - user n.#{index + 1}"
+  puts "Created #{user} - user n.#{index + 1}"
 
-# end
+end
 
 
 
@@ -94,6 +92,8 @@ posts.each_with_index do |post, index|
 
     comment.save!
   end
+
+  puts "Created comments for post #{index + 1}"
 end
 
 puts 'Seeds are over!'
