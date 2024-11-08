@@ -6,7 +6,7 @@ require 'faker'
 
 puts "Started seeds"
 
-
+Post.destroy_all
 User.destroy_all
 
 puts "Destroyed all records"
@@ -51,22 +51,45 @@ all_users = User.all
 
 all_users.each_with_index do |user, index|
 
+  3.times do |i|
+    post = Post.new(
+      description: Faker::Lorem.sentences.join(" "),
+      user: user
+    )
   
+    url = "#{unsplash_url}/photos/random?orientation=portrait&query=pet&client_id=#{client_id}"
+    photo_serialized = URI.parse(url).read
+    photo_hash = JSON.parse(photo_serialized)
+    photo_url = photo_hash['urls']['regular']
+  
+    post.photo.attach(io: file, filename: "post_#{user.username}_#{i + 1}.jpg", content_type: 'image/jpg')
+  
+    post.save!
 
-  post = Post.new(
-    description: Faker::Lorem.sentences.join(" "),
-    user: user
-  )
+    if i == 2
+      puts "Created 3 posts from #{user.username}"
+    end
+  end
 
-  url = "#{unsplash_url}/photos/random?orientation=portrait&query=pet&client_id=#{client_id}"
-  photo_serialized = URI.parse(url).read
-  photo_hash = JSON.parse(photo_serialized)
-  photo_url = photo_hash['urls']['regular']
+end
 
-  post.avatar.attach(io: file, filename: "post_#{index + 1}.jpg", content_type: 'image/jpg')
+puts "Posts created"
 
-  post.save!
+posts = Post.all
 
+posts.each_with_index do |post, index|
+
+  amount = rand(1..5)
+
+  amount.times do 
+    comment = Comment.new(
+      description: Faker::Lorem.sentences.join(" "),
+      user: all_users.sample,
+      post: post
+    )
+
+    comment.save!
+  end
 end
 
 puts 'Seeds are over!'
