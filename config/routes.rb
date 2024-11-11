@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root to: ->(_) { [200, {}, ['API is running']] }
   # devise_for :users
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
