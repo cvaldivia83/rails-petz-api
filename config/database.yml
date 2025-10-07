@@ -25,9 +25,11 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV.fetch('DATABASE_URL') %>
-  # database: <%= ENV.fetch('PGDATABASE') %>
-  # username: <%= ENV.fetch('PGUSER') %>
-  # password: <%= ENV.fetch('PGPASSWORD') %>
-  # host: <%= ENV.fetch('PGHOST') %>
-  # port: <%= ENV.fetch('PGPORT') %>
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= ENV.fetch('PGDATABASE') %>
+  username: <%= ENV.fetch('PGUSER') %>
+  password: <%= ENV.fetch('PGPASSWORD') %>
+  host: <%= ENV.fetch('PGHOST') %>
+  port: <%= ENV.fetch('PGPORT') %>
